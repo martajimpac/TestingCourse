@@ -1,6 +1,7 @@
 package com.aristidevs.cursotestingandroid.cart.presentation
 
 import androidx.activity.ComponentActivity
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -36,6 +37,8 @@ class CartScreenTest {
         onIncreaseQuantity: (String, Int) -> Unit = { _, _ -> },
         onDecreaseQuantity: (String, Int) -> Unit = { _, _ -> },
         onRemove: (String) -> Unit = {},
+        snackbarHostState: SnackbarHostState = SnackbarHostState(),
+        navigateToCheckout: () -> Unit = {},
     ) {
         composeRule.setContent {
             CartContent(
@@ -45,6 +48,8 @@ class CartScreenTest {
                 onRemove = onRemove,
                 onDecreaseQuantity = onDecreaseQuantity,
                 onIncreaseQuantity = onIncreaseQuantity,
+                snackbarHostState = snackbarHostState,
+                navigateToCheckout = navigateToCheckout,
             )
         }
     }
